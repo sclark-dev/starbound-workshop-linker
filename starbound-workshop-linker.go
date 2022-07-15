@@ -87,7 +87,19 @@ func main() {
 				&cli.StringFlag{Name: "server", Aliases: []string{"s"}, Usage: "Provides the path to remove mods from. Should end in /mods", Required: true},
 			},
 			Action: func(ctx *cli.Context) error {
-				fmt.Printf("This command isn't implemented.")
+				paks, err := getPaks(ctx.String("server"))
+				if err != nil {
+					return err
+				}
+
+				for _, pak := range paks {
+					if err := os.Remove(pak.Path); err != nil {
+						return err
+					}
+				}
+
+				fmt.Printf("Successfully removed %d mods.\n", len(paks))
+
 				return nil
 			},
 		},
