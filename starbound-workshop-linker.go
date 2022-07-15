@@ -64,6 +64,18 @@ func main() {
 				&cli.StringFlag{Name: "server", Aliases: []string{"s"}, Usage: "Provides the path to place mods in. Should end in /mods", Required: true},
 			},
 			Action: func(ctx *cli.Context) error {
+				paks, err := getPaks(ctx.String("workshop"))
+				if err != nil {
+					return err
+				}
+
+				paths, err := copyPaks(ctx.String("server"), paks)
+				if err != nil {
+					return err
+				}
+
+				fmt.Printf("Successfully copied %d mods.\n", len(paths))
+
 				return nil
 			},
 		},
