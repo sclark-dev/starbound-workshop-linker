@@ -30,7 +30,32 @@ func main() {
 		},
 	}
 	App.Version = "1.0.0"
-	App.Commands = []*cli.Command{}
+	App.Commands = []*cli.Command{
+		{
+			Name:    "symlink",
+			Aliases: []string{"s"},
+			Usage:   "Links workshop files using symlinks. For running on the same machine as you.",
+			Flags: []cli.Flag{
+				&cli.StringFlag{Name: "workshop", Aliases: []string{"w"}, Usage: "Provides the path to look for mods in. Should end in workshop/content/211820", Required: true},
+				&cli.StringFlag{Name: "server", Aliases: []string{"s"}, Usage: "Provides the path to place mods in. Should end in /mods", Required: true},
+			},
+			Action: func(ctx *cli.Context) error {
+				return nil
+			},
+		},
+		{
+			Name:    "copy",
+			Aliases: []string{"c"},
+			Usage:   "Copies workshop files. For running on a separate dedicated machine.",
+			Flags: []cli.Flag{
+				&cli.StringFlag{Name: "workshop", Aliases: []string{"w"}, Usage: "Provides the path to look for mods in. Should end in workshop/content/211820", Required: true},
+				&cli.StringFlag{Name: "server", Aliases: []string{"s"}, Usage: "Provides the path to place mods in. Should end in /mods", Required: true},
+			},
+			Action: func(ctx *cli.Context) error {
+				return nil
+			},
+		},
+	}
 
 	if err := App.Run(os.Args); err != nil {
 		log.Fatalf("Failed to start application: %v", err)
