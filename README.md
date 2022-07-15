@@ -2,7 +2,7 @@
 This is a small tool to help automate the process of setting up a modded Starbound server. Due to how the workshop is implemented, running the dedicated Starbound server will not automatically load the mods. You must manually place them in the mods folder, which can be very time consuming. To fix this, I created this program.
 
 ### Usage
-To use this tool, just download the executable for your platform and run is via terminal. All features are documented via the `-h` argument, however the most common uses are listed below. The examples given are for Linux and MacOS. Windows is done largly the same, just with a different executable name and using backslashes.
+To use this tool, just download the [Latest Release](https://github.com/sclark-dev/starbound-workshop-linker/releases/latest) and run is via terminal. All features are documented via the `-h` argument, however the most common uses are listed below. The examples given are for Linux and MacOS. Windows is done largly the same, just with a different executable name and using backslashes.
 
 #### Symlink
 Symlinking is the preferred method if the server will be running on the same machine as you play on. This method provides automatic updates for all mods.
