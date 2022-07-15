@@ -79,6 +79,18 @@ func main() {
 				return nil
 			},
 		},
+		{
+			Name:    "unlink",
+			Aliases: []string{"u"},
+			Usage:   "Removed all currently linked mods.",
+			Flags: []cli.Flag{
+				&cli.StringFlag{Name: "server", Aliases: []string{"s"}, Usage: "Provides the path to remove mods from. Should end in /mods", Required: true},
+			},
+			Action: func(ctx *cli.Context) error {
+				fmt.Printf("This command isn't implemented.")
+				return nil
+			},
+		},
 	}
 
 	if err := App.Run(os.Args); err != nil {
