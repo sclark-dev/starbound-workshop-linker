@@ -111,7 +111,7 @@ func main() {
 }
 
 func getPaks(dir string) ([]Mod, error) {
-	returnString := []Mod{}
+	var returnString []Mod
 	if err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
 		if d.IsDir() || filepath.Ext(path) != ".pak" {
 			return nil
@@ -127,7 +127,7 @@ func getPaks(dir string) ([]Mod, error) {
 }
 
 func linkPaks(dir string, paks []Mod) ([]string, error) {
-	returnString := []string{}
+	var returnString []string
 	for _, pak := range paks {
 		newPath := fmt.Sprintf("%s%c%s.pak", dir, os.PathSeparator, pak.ID)
 		if err := os.Symlink(pak.Path, newPath); err != nil {
@@ -140,10 +140,13 @@ func linkPaks(dir string, paks []Mod) ([]string, error) {
 }
 
 func copyPaks(dir string, paks []Mod) ([]string, error) {
-	returnString := []string{}
+	var returnString []string
 	for _, pak := range paks {
 		newPath := fmt.Sprintf("%s%c%s.pak", dir, os.PathSeparator, pak.ID)
-		cp.CopyFile(pak.Path, newPath)
+		err := cp.CopyFile(pak.Path, newPath)
+		if err != nil {
+			return nil, err
+		}
 		returnString = append(returnString, newPath)
 	}
 
