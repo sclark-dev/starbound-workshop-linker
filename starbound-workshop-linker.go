@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gosimple/slug"
 	"io/fs"
 	"log"
 	"net/http"
@@ -11,6 +10,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/gosimple/slug"
 
 	"github.com/nmrshll/go-cp"
 	"github.com/urfave/cli/v2"
@@ -67,7 +68,7 @@ func main() {
 	App.Authors = []*cli.Author{
 		{
 			Name:  "Shane Clark",
-			Email: "sclark@frostfire.io",
+			Email: "https://github.com/sclark-dev",
 		},
 	}
 	App.Version = "1.1.0"
