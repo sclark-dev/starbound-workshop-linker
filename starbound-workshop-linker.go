@@ -71,7 +71,7 @@ func main() {
 			Email: "sclark@jadesoftware.net",
 		},
 	}
-	App.Version = "1.1.0"
+	App.Version = "1.1.1"
 	App.Commands = []*cli.Command{
 		{
 			Name:    "symlink",
@@ -157,7 +157,11 @@ func main() {
 func getPaks(dir string, api bool) ([]Mod, error) {
 	var mods []Mod
 	if err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
-		if d == nil || d.IsDir() || filepath.Ext(path) != ".pak" {
+		if err != nil {
+			return err
+		}
+
+		if d.IsDir() || filepath.Ext(path) != ".pak" {
 			return nil
 		}
 
