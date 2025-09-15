@@ -5,13 +5,13 @@ build:
 all: linux windows darwin zip
 
 linux:
-	GOARCH="amd64" GOOS="linux" go build -ldflags="-s -w" -o="dist/linux/swl"
+	GOARCH="amd64" GOOS="linux" go build -trimpath -ldflags="-s -w" -o="dist/linux/swl"
 
 windows:
-	GOARCH="amd64" GOOS="windows" go build -ldflags="-s -w" -o="dist/windows/swl.exe"
+	GOARCH="amd64" GOOS="windows" go build -trimpath -ldflags="-s -w" -o="dist/windows/swl.exe"
 
 darwin:
-	GOARCH="amd64" GOOS="darwin" go build -ldflags="-s -w" -o="dist/darwin/swl"
+	GOARCH="amd64" GOOS="darwin" go build -trimpath -ldflags="-s -w" -o="dist/darwin/swl"
 
 zip:
 	rm -f dist/starbound-workshop-linker.zip
