@@ -68,7 +68,7 @@ func main() {
 	App.Authors = []*cli.Author{
 		{
 			Name:  "Shane Clark",
-			Email: "https://github.com/sclark-dev",
+			Email: "sclark@jadesoftware.net",
 		},
 	}
 	App.Version = "1.1.0"
