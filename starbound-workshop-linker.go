@@ -157,7 +157,7 @@ func main() {
 func getPaks(dir string, api bool) ([]Mod, error) {
 	var mods []Mod
 	if err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
-		if d.IsDir() || filepath.Ext(path) != ".pak" {
+		if d == nil || d.IsDir() || filepath.Ext(path) != ".pak" {
 			return nil
 		}
 
